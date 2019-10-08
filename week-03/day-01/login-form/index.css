@@ -1,0 +1,10 @@
+
+span.forget-pwd {
+    float: rigth;
+    position: fixed;
+    margin-top: 16px;
+}
+
+input:focus {
+    outline-color: green;
+}
