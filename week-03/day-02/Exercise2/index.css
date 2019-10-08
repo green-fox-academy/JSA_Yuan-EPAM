@@ -1,0 +1,22 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    border: 3px solid blue;
+    background-color: yellow;
+    width: 500px;
+    height: 200px;
+}
+
+.box {
+    border: 1px solid red;
+    background-color: purple;
+    width: 100px;
+    height: 100px;
+    margin: 50px 200px 50px 200px;
+}

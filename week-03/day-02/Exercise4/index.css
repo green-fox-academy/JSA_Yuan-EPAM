@@ -1,0 +1,64 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.container {
+    border: 1px solid blue;
+    width: 800px;
+    height: 600px;
+    margin: auto;
+}
+
+#header {
+    border: 1px solid red;
+    background-color: purple;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+}
+
+#content {
+    display: flex;
+}
+
+/* ----- header ----- */
+#header ul {
+    border: 1px solid yellow;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    height: 30px;
+    padding: 0px;
+}
+
+#header ul > li {
+    border: 1px solid lightseagreen;
+    background-color: aqua;
+    width: 50px;
+    height: 30px;
+    list-style: none;
+}
+
+#header li:first-child {
+    width: 70px;
+    margin-left: 10px;
+}
+
+/* ----- content ----- */
+#content .main {
+    border: 1px solid red;
+    background-color: yellow;
+    width: 70%;
+    height: 540px;
+}
+
+#content .side-bar {
+    border: 2px solid yellow;
+    background-color: green;
+    width: 30%;
+    height: 540px;
+}
