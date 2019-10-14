@@ -8,3 +8,9 @@
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+# Dependencies
+node_modules/
+*/node_modules
+/.pnp
+.pnp.js
