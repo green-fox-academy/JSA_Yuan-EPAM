@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,25 +11,44 @@ import "./GalleryApp.css"
 import navIcon from "./nav-icon.svg";
 import DATA from "./Data";
 
-function Content(props) {
-    let { id } = useParams;
-    let image = DATA[4];
+function Content() {
+    let [count, setCount] = useState(0);
+    let nextItem = () => {
+        if (count >= 4) { return count; }
+        setCount(count + 1);
+    };
+    let prevItem = () => {
+        if (count <= 0) { return count; }
+        setCount(count - 1);
+    };
+
+    let imageItem = <Image path={DATA[count].path} />;
+
+    useEffect(() => {
+        let navBarRight = document.querySelector(".right");
+        if (count >= 4) {
+            navBarRight.style.opacity = 0.5;
+        } else {
+            navBarRight.style.opacity = 1;
+        }
+    })
 
     return (
         <div className="content">
-            <NavBar direction="left" />
-            <Image path={image.path} />
-            <NavBar direction="right" />
+            <button onClick={prevItem}><NavBar direction="left" /></button>
+            {imageItem}
+            <button onClick={nextItem}><NavBar direction="right" /></button>
         </div>
     )
 }
 
 function Image(props) {
     console.log(props.path);
+    let image = props.path;
 
     return (
         <div className="images">
-            <img src={props.path} />
+            <img src={image} />
             <ImageDescription />
         </div>
     )
@@ -61,23 +80,36 @@ function NavBar(props) {
             </div>
         );
     }
+}
+
+function ThumbnailImg(props) {
+    let [imgIdx, setImgIdx] = useState(0);
+    let img = <img key={props.img.id} src={props.img.path} />;
+    let showIdx = (event) => {
+        console.log("showIdx: ");
+        console.log(imgIdx);
+        let clickedIdx = parseInt(event.target.className) - 1;
+        // console.log(event.target.className);
+        console.log(clickedIdx);
+        setImgIdx(clickedIdx);
+    };
+
+    useEffect(() => {
+        // effect
+        let img = document.querySelector(".images img")
+        console.log("current img: ");
+        console.log(img);
+        img.setAttribute("src", DATA[imgIdx].path);
+    }, [imgIdx])
+
+    return <img className={props.img.id} key={props.img.id} src={props.img.path} onClick={showIdx} />
 
 }
 
 function Thumbnail() {
-    const [count, setCount] = useState(0);
 
     let imageItem = DATA.map(item => (
-        <Link
-            key={item.id}
-            to={{
-                pathname: `/img/:${item.id}`
-            }}
-        >
-            <img src={item.path} onClick={() => setCount(prevCount => prevCount + 1)} />
-        </Link>
-        // console.log(count),
-
+        <ThumbnailImg img={item}/>
     ));
 
     return (
@@ -88,17 +120,10 @@ function Thumbnail() {
 }
 
 function ImageGallery() {
-    // let location = useLocation(); 
-
     return (
         <div id="image-gallery">
             <Content />
-            {/* <Thumbnail /> */}
-            <Router>
-                <Switch>
-                    <Thumbnail />
-                </Switch>
-            </Router>
+            <Thumbnail />
         </div>
     );
 }
