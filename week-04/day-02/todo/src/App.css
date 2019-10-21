@@ -1,0 +1,86 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+
+/* Container */
+.container {
+  border: 1px solid red;
+  background-color: rgb(53, 240, 193);
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+/* ------------------------------------ */
+
+
+/* todoBox */
+.todoBox {
+  border: 1px solid blue;
+  background-color: rgb(240, 243, 242);
+  padding: 30px;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.todoBox-heading{
+  font-family: 'Lato', sans-serif;
+  font-size : 64px;
+  font-weight: 300px;
+  color: #b8b8b8;
+}
+
+
+.todoBox-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* todobox content */
+input {
+  width: 70%;
+}
+
+button {
+  background-color: rgb(241, 93, 222);
+  padding: 5px;
+}
+
+.button-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 26px;
+  color: #ffffff;
+}
+
+/* ------------------------------------ */
