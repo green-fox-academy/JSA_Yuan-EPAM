@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GalleryApp from './App';
+import GalleryApp from './GalleryApp';
 import * as serviceWorker from './serviceWorker';
+
+let body = document.getElementsByTagName("body");
 
 ReactDOM.render(<GalleryApp />, document.getElementById('root'));
 

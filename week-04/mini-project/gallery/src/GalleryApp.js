@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams
-} from "react-router-dom";
 
 import "./GalleryApp.css"
 import navIcon from "./nav-icon.svg";
@@ -43,7 +36,6 @@ function Content() {
 }
 
 function Image(props) {
-    console.log(props.path);
     let image = props.path;
 
     return (
@@ -55,16 +47,14 @@ function Image(props) {
 }
 
 function ImageDescription(props) {
-
     return (
         <div className="img-description">
-            Imgage description area
+            {/* Imgage description area */}
         </div>
     )
 }
 
 function NavBar(props) {
-
     if (props.direction === "left") {
         return (
             <div className="nav-bar">
@@ -84,32 +74,22 @@ function NavBar(props) {
 
 function ThumbnailImg(props) {
     let [imgIdx, setImgIdx] = useState(0);
-    let img = <img key={props.img.id} src={props.img.path} />;
     let showIdx = (event) => {
-        console.log("showIdx: ");
-        console.log(imgIdx);
         let clickedIdx = parseInt(event.target.className) - 1;
-        // console.log(event.target.className);
-        console.log(clickedIdx);
         setImgIdx(clickedIdx);
     };
 
     useEffect(() => {
-        // effect
         let img = document.querySelector(".images img")
-        console.log("current img: ");
-        console.log(img);
         img.setAttribute("src", DATA[imgIdx].path);
     }, [imgIdx])
 
     return <img className={props.img.id} key={props.img.id} src={props.img.path} onClick={showIdx} />
-
 }
 
 function Thumbnail() {
-
     let imageItem = DATA.map(item => (
-        <ThumbnailImg img={item}/>
+        <ThumbnailImg img={item} />
     ));
 
     return (
@@ -130,9 +110,7 @@ function ImageGallery() {
 
 function GalleryApp() {
     return (
-        <Router>
-            <ImageGallery />
-        </Router>
+        <ImageGallery />
     )
 }
 
