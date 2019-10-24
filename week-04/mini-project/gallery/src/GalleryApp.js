@@ -6,6 +6,7 @@ import DATA from "./Data";
 
 function Content() {
     let [count, setCount] = useState(0);
+    let [opacity, setOpacity] = useState(1);
     let nextItem = () => {
         if (count >= 4) { return count; }
         setCount(count + 1);
@@ -20,9 +21,9 @@ function Content() {
     useEffect(() => {
         let navBarRight = document.querySelector(".right");
         if (count >= 4) {
-            navBarRight.style.opacity = 0.5;
+             setOpacity(0.5);
         } else {
-            navBarRight.style.opacity = 1;
+            setOpacity(1);
         }
     })
 
@@ -30,7 +31,7 @@ function Content() {
         <div className="content">
             <button onClick={prevItem}><NavBar direction="left" /></button>
             {imageItem}
-            <button onClick={nextItem}><NavBar direction="right" /></button>
+            <button onClick={nextItem}><NavBar direction="right" opacity={opacity}/></button>
         </div>
     )
 }
@@ -65,7 +66,7 @@ function NavBar(props) {
 
     if (props.direction === "right") {
         return (
-            <div className="nav-bar right">
+            <div className="nav-bar right" style={{opacity: props.opacity}}>
                 <img src={navIcon} />
             </div>
         );
