@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/cocktail.css">
+    <title>Cocktails</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Cocktails</h1>
+        <div class="alcoholList">
+            <% if(alcoholList != undefined) { %>
+            All
+            <% for (let i = 0; i < alcoholList.length; i++) { %>
+            <span><%= alcoholList[i] %></span>
+            <% } 
+            }%>
+        </div>
+
+        <div class="cocktails">
+            <table>
+                <thead>
+                    <tr>
+                        <th>NAME</th>
+                        <th>PRICE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% if(cocktails != undefined) { %>
+                    <tr>
+                        <% for (let i = 0; i < cocktails.length; i++) { %>
+                        <td><%= cocktails[i].name%> </br ><sub><%= cocktails[i].contains %></sub></td>
+                        <td><%= cocktails[i].price %> </td>
+                    </tr>
+                    <% } 
+                    } %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+
+</html>
