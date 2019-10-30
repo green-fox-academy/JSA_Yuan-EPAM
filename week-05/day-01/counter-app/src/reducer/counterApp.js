@@ -1,6 +1,6 @@
 import {
     initState,
-} from "../action/counterAction"
+} from "../action/index"
 
 const counterApp = (state=initState, action) => {
     console.log(action)

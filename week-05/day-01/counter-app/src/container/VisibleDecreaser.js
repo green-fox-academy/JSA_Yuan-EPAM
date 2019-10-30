@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { descreaseCounter } from '../action/counterAction'
+import { descreaseCounter } from '../action/index'
 import Descreaser from '../components/Descreaser'
 
 const mapStateToProps = state => ({
