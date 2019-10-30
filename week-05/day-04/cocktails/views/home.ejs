@@ -13,7 +13,7 @@
         <h1>Cocktails</h1>
         <div class="alcoholList">
             <% if(alcoholList != undefined) { %>
-            All
+            <span>All</span>
             <% for (let i = 0; i < alcoholList.length; i++) { %>
             <span><%= alcoholList[i] %></span>
             <% } 
@@ -33,10 +33,16 @@
                     <% if(cocktails != undefined) { %>
                     <tr>
                         <% for (let i = 0; i < cocktails.length; i++) { %>
-                        <td><%= cocktails[i].name%> </br ><sub><%= cocktails[i].contains %></sub></td>
-                        <td><%= cocktails[i].price %> </td>
+                        <td>
+                            <% if (alcoholList.includes(cocktails[i].contains[0])) { %>
+                            <%= cocktails[i].name %>
+                            <% } else { %>
+                            <%= cocktails[i].name %><span> (non-alcoholic) </span> <% } %> </br>
+                            <sub><%= cocktails[i].contains %></sub>
+                        </td>
+                        <td><%= cocktails[i].price %> Ft</td>
                     </tr>
-                    <% } 
+                    <% }
                     } %>
                 </tbody>
             </table>
