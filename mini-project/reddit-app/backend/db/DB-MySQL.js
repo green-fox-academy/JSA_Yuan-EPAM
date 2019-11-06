@@ -1,15 +1,15 @@
 const mysql = require('mysql');
 
 
-const PARAMS = {
+const Config = {
     host: "localhost",
     user: "root",
     password: "root",
     database: "reddit"
 };
 
-const MySQL_DB = (PARAMS) => {
-    let connection = mysql.createConnection(PARAMS);
+const MySQL_DB = (Config) => {
+    let connection = mysql.createConnection(Config);
 
     connection.connect(function (err) {
         if (err) {
@@ -24,4 +24,4 @@ const MySQL_DB = (PARAMS) => {
 }
 
 
-module.exports = MySQL_DB;
+module.exports = MySQL_DB(Config);
