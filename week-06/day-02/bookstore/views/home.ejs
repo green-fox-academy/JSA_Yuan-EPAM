@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookstore Title</title>
+</head>
+
+<body>
+    <% if (data != undefined) { %>
+    <table>
+        <tr>
+            <th>Book Titles</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Publisher</th>
+            <th>Price</th>
+        </tr>
+        <% for (let item of data) { %>
+        <tr>
+            <td><%= item.book_name %></td>
+            <td><%= item.aut_name %></td>
+            <td><%= item.cate_descrip %></td>
+            <td><%= item.pub_name %></td>
+            <td><%= item.purch_price %></td>
+        </tr>
+        <% } %>
+        <% } %>
+    </table>
+</body>
+
+</html>
