@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+</head>
+
+<body>
+    <% if (todoData != undefined) { %>
+    <ul>
+        <% for (let item of todoData) { %>
+        <li><%= item['text'] %></li>
+        <% } %>
+        <% } %>
+    </ul>
+
+</body>
+
+</html>
