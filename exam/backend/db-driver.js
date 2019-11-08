@@ -38,16 +38,21 @@ function getAllOptions(db = DB_MySQL) {
                     ON ?? = ??`;
     let inserts = ["Vote.id", "content", "name", "votes", "Question.id", "Vote.question_id"];
     query = mysql.format(query, inserts);
-    // console.log(query);
     return executeQuery(query, db);
-        
 }
 
-// console.log(getQuestionById());
-// getAllOptions();
+function updateOptionVoteById(data, db = DB_MySQL) {
+    let query = `UPDATE Vote SET votes = votes + ? WHERE id = ?`;
+    let inserts = [data.votes, data.id];
+    query = mysql.format(query, inserts);
+
+    console.log(query);
+    return executeQuery(query, db);
+}
 
 module.exports = {
     DB_MySQL,
     getQuestionById,
-    getAllOptions
+    getAllOptions,
+    updateOptionVoteById
 }
