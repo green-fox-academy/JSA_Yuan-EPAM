@@ -51,3 +51,13 @@
 button {
   border: 1px solid greenyellow;
 }
+
+#vote-score {
+  border: 2px solid rgb(84, 52, 172);
+}
+
+#vote-score .score-bar {
+  text-align: right;
+  padding: 10px 0 10px 0;
+  background-color: greenyellow;
+}
