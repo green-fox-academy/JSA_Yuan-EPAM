@@ -5,9 +5,6 @@ const OptionReminder = (props) => {
 
     const handleReminder = (content) => setReminder(content)
 
-    console.log('OptionRemindersd');
-    console.log(reminder);
-
     return (
         <div className="reminder">
                 {/* {Object.keys(props.options).map(key => (

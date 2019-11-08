@@ -5,28 +5,51 @@ import OptionReminder from './OptionReminder';
 
 const OptionArea = (props) => {
     const [options, setOptions] = useState({});
-    // const [hasError, setErrors] = useState(false);
+    const [hasError, setErrors] = useState(false);
     const [selectedId, setSelectedId] = useState(-1);
     const [reminder, setReminder] = useState("No option selected");
+    const [vote, setVote] = useState(0);
 
     async function fetchData() {
         let url = "http://localhost:8080/api/poll";
         const res = await fetch(url);
         res.json()
             .then(res => setOptions(res))
-        // .catch(err => setErrors(err));
+            .catch(err => setErrors(err));
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        let url = `http://localhost:8080/api/vote/${selectedId}`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Accept" : 'application/json',
+                'Content-Type': 'application/json'
+            },
+            // id: selectedId
+            body: JSON.stringify({
+                id : selectedId,
+                votes : vote
+            })
+        });
     }
 
     useEffect(() => {
         fetchData();
+        handleVote();
     }, [])
 
     const handleSelected = (id) => setSelectedId(id);
     const handleReminder = (name) => setReminder(`Selected option: ${name}`);
+    const handleVote = () => {
+        console.log(`handler vote: ${vote}`);
+        return setVote(1);
+    }
 
     return (
         <div className="option-area">
-            <form>
+            <form onSubmit={handleSubmit}>
                 {Object.keys(options).map(key => (
                     <Option
                         key={options[key]["id"]}
@@ -39,11 +62,11 @@ const OptionArea = (props) => {
                         handleReminder={handleReminder}
                     />
                 ))}
-                
-                {selectedId != -1 ? (<button selectedId={selectedId} type="submit" >Vote</button>) : ''}
 
-
-                <OptionReminder reminder={reminder} />
+                <div className="footer">
+                    <OptionReminder reminder={reminder} />
+                    {selectedId != -1 ? (<button type="submit" onClick={() => handleVote()}>Vote</button>) : ''}
+                </div>
 
             </form>
         </div>
