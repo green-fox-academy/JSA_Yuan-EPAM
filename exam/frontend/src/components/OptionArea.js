@@ -7,6 +7,7 @@ const OptionArea = (props) => {
     const [options, setOptions] = useState({});
     // const [hasError, setErrors] = useState(false);
     const [selectedId, setSelectedId] = useState(-1);
+    const [reminder, setReminder] = useState("No option selected");
 
     async function fetchData() {
         let url = "http://localhost:8080/api/poll";
@@ -20,10 +21,8 @@ const OptionArea = (props) => {
         fetchData();
     }, [])
 
-    const handleSelected = (id) => {
-        // console.log(id)
-        return setSelectedId(id)
-    };
+    const handleSelected = (id) => setSelectedId(id);
+    const handleReminder = (name) => setReminder(`Selected option: ${name}`);
 
     return (
         <div className="option-area">
@@ -37,13 +36,15 @@ const OptionArea = (props) => {
                         onClick={handleSelected}
                         selectedId={selectedId}
                         handleSelected={handleSelected}
+                        handleReminder={handleReminder}
                     />
                 ))}
-                <button type="submit" >Vote</button>
-                {/* <OptionReminder
-                    selectedId={selectedId}
-                    name={selectedId === -1 ? options[selectedId]["name"] : ''}
-                /> */}
+                
+                {selectedId != -1 ? (<button selectedId={selectedId} type="submit" >Vote</button>) : ''}
+
+
+                <OptionReminder reminder={reminder} />
+
             </form>
         </div>
     )
