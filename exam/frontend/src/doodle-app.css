@@ -33,9 +33,21 @@
 }
 
 
-.option-area .reminder {
-  width: 95%;
+.footer {
+  display: flex;
+  justify-content: space-evenly ;
+
+  border: 2px solid red;
+}
+
+.reminder {
+  /* width: 50%; */
   height: 30px;
-  margin: auto;
   border : 1px solid peru;
+
+  text-align: center;
+}
+
+button {
+  border: 1px solid greenyellow;
 }

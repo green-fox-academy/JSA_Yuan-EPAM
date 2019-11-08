@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import Option from './Option';
 
 import OptionReminder from './OptionReminder';
 
 const OptionArea = (props) => {
+    let history = useHistory();
     const [options, setOptions] = useState({});
     const [hasError, setErrors] = useState(false);
     const [selectedId, setSelectedId] = useState(-1);
@@ -19,6 +21,8 @@ const OptionArea = (props) => {
     }
 
     async function handleSubmit(event) {
+        history.push('./result');
+
         event.preventDefault();
         let url = `http://localhost:8080/api/vote/${selectedId}`;
         fetch(url, {
@@ -44,6 +48,7 @@ const OptionArea = (props) => {
     const handleReminder = (name) => setReminder(`Selected option: ${name}`);
     const handleVote = () => {
         console.log(`handler vote: ${vote}`);
+        // history.push('/result');
         return setVote(1);
     }
 
@@ -65,7 +70,7 @@ const OptionArea = (props) => {
 
                 <div className="footer">
                     <OptionReminder reminder={reminder} />
-                    {selectedId != -1 ? (<button type="submit" onClick={() => handleVote()}>Vote</button>) : ''}
+                    {selectedId != -1 ? (<button type="submit" onClick={handleVote}>Vote</button>) : ''}
                 </div>
 
             </form>
