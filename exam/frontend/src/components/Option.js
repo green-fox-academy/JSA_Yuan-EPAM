@@ -22,11 +22,7 @@ const Option = (props) => {
                 checked={props.id === props.selectedId ? true : false}
             />
             <label for={props.id}>{props.name}</label>
-            {vote}
-            <OptionReminder
-                selectedId={props.selectedId}
-                name={props.name}
-            />
+            <space></space>{vote}
         </div>
     )
 }

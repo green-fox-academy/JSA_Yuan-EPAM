@@ -40,10 +40,10 @@ const OptionArea = (props) => {
                     />
                 ))}
                 <button type="submit" >Vote</button>
-                <OptionReminder
+                {/* <OptionReminder
                     selectedId={selectedId}
                     name={selectedId === -1 ? options[selectedId]["name"] : ''}
-                />
+                /> */}
             </form>
         </div>
     )
